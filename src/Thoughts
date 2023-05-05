@@ -1,0 +1,2 @@
+Referee needs two players, and two boards to track each player.
+Only difference between interfaces is ship placement: Boards need to be given ships, players are given fleet counts to place
