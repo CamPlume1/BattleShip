@@ -4,11 +4,11 @@ public class BoardImpl implements Board {
     /**
      * Board owned by the user represented by this program
      */
-    List<Ship> fleet;
+    protected List<Ship> fleet;
     /**
      * Board owned by the opponent of the user represented by this program
      */
-    CellStatus[][] OpponentBoard;
+    protected CellStatus[][] OpponentBoard;
 
     /**
      * Recieves a list of opponents shots from the previous round. Updates board, and replies with a list of shots
@@ -50,24 +50,14 @@ public class BoardImpl implements Board {
 
 
     @Override
-    public List<Pair<Coord, Dir>> setup(Map<String, Integer> specifications) {
+    public List<Ship> setup(Map<String, Integer> specifications) {
         this.OpponentBoard = new CellStatus[specifications.get("width")][specifications.get("height")];
         specifications.remove("width");
         specifications.remove("height");
         this.placeBoats(specifications);
-        return this.shipFormat(); //Format Ship list into format expected by server
+        return this.fleet; //Format Ship list into format expected by server
 
     }
-
-    // Format ship list into valid return format. FIX INTERFACE
-    private List<Pair<Coord,Dir>> shipFormat() {
-        List<Pair<Coord, Dir>> retList = new ArrayList<>();
-        for (Ship s : this.fleet){
-            retList.add(new Pair<Coord, Dir>(s.getStartPoint(), s.getDir()));
-        }
-        return retList;
-    }
-
 
 
     //Given a fleet from the server, place boats
