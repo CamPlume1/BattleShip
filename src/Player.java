@@ -11,7 +11,6 @@ public interface Player extends Board {
     public void mirrorClientPlacement(List<Ship> playerShips);
 
 
-    void testmethod();
 
 
 
