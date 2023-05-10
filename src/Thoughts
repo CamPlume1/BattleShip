@@ -1,2 +1,14 @@
 Referee needs two players, and two boards to track each player.
-Only difference between interfaces is ship placement: Boards need to be given ships, players are given fleet counts to place
+Only difference between interfaces is ship placement: Boards need to be given ships, players are given fleet counts to place.
+
+Control Flow:
+Send empty salvo to players
+Send empty salvo to boards
+SAVE RETURNS AS INBOUND-PLayer
+check returns for validity
+cross route returns
+check returns for validity
+cross route returns
+
+
+

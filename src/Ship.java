@@ -23,10 +23,12 @@ public class Ship {
         this.startPoint = startPoint;
         this.length = length;
         this.orientation = orientation;
+        this.hits = new ArrayList<>();
     }
 
     public Ship(int length){
         this.length = length;
+        this.hits = new ArrayList<>();
     }
 
     public void place(Coord start, Dir dir){
@@ -55,7 +57,6 @@ public class Ship {
         return status;
     }
 
-    //TODO: Write Receive Shot Method
     /**
      * Processes a shot from opponent on a single ship level. Will change status if necessary
      *
@@ -113,5 +114,21 @@ public class Ship {
             temp = new Coord(this.startPoint.getX(), this.startPoint.getY() + length - 1);
         }
         return temp;
+    }
+
+    public boolean isHit(Coord c){
+        if (this.orientation == Dir.LEFT || this.orientation == Dir.RIGHT){
+            if((this.startPoint.getY() == c.getY() && this.startPoint.getX() <= c.getX() && this.getEndpoint().getX() >= c.getX())
+                    && !hits.contains(c));
+            return true;
+        }
+        else if (this.orientation == Dir.UP || this.orientation == Dir.DOWN){
+            if((this.startPoint.getX() == c.getX() && this.startPoint.getY() <= c.getY() && this.getEndpoint().getY() >= c.getY())
+                    && !hits.contains(c));
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class Coord {
     }
 
     public int getY(){
-        return this.getY();
+        return this.y;
     }
 
     @Override
